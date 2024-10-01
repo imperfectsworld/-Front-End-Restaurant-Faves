@@ -1,0 +1,24 @@
+<h1>Restaurant Faves</h1>
+<table>
+<tr>
+<th>Description</th>
+<th>Restaurant</th>
+<th>Rating</th>
+<th>Order Again?</th>
+</tr>
+
+@for (o of allOrders; track $index) {
+    <tr>
+    <td>{{o.description}}</td>
+    <td>{{o.restaurant}}</td>
+    <td>{{o.rating}}</td>
+    
+        @if (o.orderAgain == true) {<td>✓</td>}
+        @else{<td></td>}
+    <td> <button (click)="callApiDeleteOrder(o)">x</button></td>      
+    </tr>
+}
+
+</table>
+
+<app-add-order-form (Created)="callApiAddOrder($event)"></app-add-order-form>
